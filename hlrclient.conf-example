@@ -1,0 +1,154 @@
+#
+# hlrclient example config file
+# copy this file to /etc/hlrclient/hlrclient.conf
+# and edit according to your sigtran connection
+#
+
+#
+# first we create a SCTP object which contains all the SCTP peer information
+# the local and remote IP addresses and ports must match with your sigtran
+# peer. We name this object "sctp-m3ua" which is references by its name later
+#
+
+group = sctp
+name = sctp-m3ua
+enable = yes
+log-level = 0
+local-ip = 1.1.1.1
+local-port = 2905
+remote-ip = 2.2.2.2
+remote-port = 2905
+passive = NO
+heartbeat = 30
+
+
+#
+# our mtp3 instance named 'mtp3-1'
+# we define network indicator (ni) = 0 here which means international
+# point code. We define our pointcode to be 0-20-7
+#
+
+group = mtp3
+name = mtp3-1
+enable = yes
+log-level = 0
+variant = itu
+ni = 0
+opc = 0-20-7
+
+#
+# the m3ua application server named "m3ua-as-1"
+# we map the peer's pointcode here under apc (adjacent pointcode)
+# we define the mutually agreed routing key and traffic mode
+#
+group = m3ua-as
+name = m3ua-as-1
+enable = yes
+mtp3 = mtp3-1
+routing-key = 207
+apc = 1-111-1
+traffic-mode = override
+
+
+#
+# the m3ua application server process
+# this links the m3ua-as to the sctp connection.
+# in traditional mtp3 this would correspond to a mtp3 link
+# while the application server would correspond to a linkset
+#
+group = m3ua-asp
+name = m3ua-asp-1
+enable = yes
+m3ua-as = m3ua-as-1
+attach-to = sctp-m3ua
+reopen-timer1 = 3
+reopen-timer2 = 120
+linktest-timer = 30
+
+#
+# our mtp3 object is now complete
+# now we create a SCCP instance on top of it.
+#
+group = sccp
+name = sccp-1
+enable = YES
+log-level = 0
+attach-to = mtp3-1
+opc = 0-20-7
+variant = itu
+
+#
+# to route SCCP packets outbound
+# we have to define a next hop first
+#
+group = sccp-next-hop
+name = sccp-hop-1
+attach-to = mtp3-1
+sccp = sccp-1
+dpc = 1-111-1
+
+#
+# we instantiate this next hop as a route and attach it as the default
+# to the sccp instance.
+# note for inbound sccp routing, we do not (yet) create routes
+# as the upper layer adds this while attaching (this might change)
+#
+
+group = sccp-route
+name = sccp-route1
+sccp = sccp-1
+default = yes
+next-hop = sccp-hop-1
+
+
+#
+# the transaction layer tcap
+# it tells the sccp that it wants all inbound messages for the MSC subsystem
+# directed to it on any number
+#
+
+group = tcap
+name = tcap-msc
+enable = YES
+log-level = 0
+attach-to = sccp-1
+attach-number = any
+attach-ssn = msc
+variant = itu
+
+#
+# the gsm-map layer
+# here we define this instances default SCCP calling address
+# (it can be overriden). This number is only used outbound
+#
+
+group = gsmmap
+name = gsmmap-msc
+enable = YES
+log-level = 0
+attach-to = tcap-msc
+address = "+12345678"
+ssn = msc
+
+#
+# and finally we need to create a MSC entity which does the query
+#
+group = msc
+name = msc-1
+enable = YES
+log-level = 0
+attach-to = gsmmap-msc
+variant = itu
+timeout = 90
+number = "+12345678"
+
+
+#
+# we define the builtin webservers http port
+#
+group = webserver
+name = webserver-1
+enable = YES
+log-level = 0
+port = 8080
+

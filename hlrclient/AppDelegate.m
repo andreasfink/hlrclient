@@ -32,6 +32,7 @@
         m3ua_as_dict        = [[UMSynchronizedDictionary alloc]init];
         m3ua_asp_dict       = [[UMSynchronizedDictionary alloc]init];
         sccp_dict           = [[UMSynchronizedDictionary alloc]init];
+        sccp_next_hop_dict  = [[UMSynchronizedDictionary alloc]init];
         tcap_dict           = [[UMSynchronizedDictionary alloc]init];
         mtp3_link_dict      = [[UMSynchronizedDictionary alloc]init];
         mtp3_linkset_dict   = [[UMSynchronizedDictionary alloc]init];
@@ -90,7 +91,7 @@ static BOOL isRunningTests(void)
     @autoreleasepool
     {
         NSString *path = req.url.relativePath;
-        if([path isEqualToString:@"/hlrrequest"])
+        if([path hasPrefix:@"/msc"])
         {
             [mainMscInstance httpGetPost:req];
         }
@@ -102,6 +103,10 @@ static BOOL isRunningTests(void)
         {
             NSString *s = [self webIndex];
             [req setResponseHtmlString:s];
+        }
+        else if([path isEqualToString:@"/css/style.css"])
+        {
+            [req setResponseCssString:[AppDelegate css]];
         }
         else
         {
@@ -131,7 +136,7 @@ static BOOL isRunningTests(void)
 
     [s appendString:@"<h2>HLR Client</h2>\n"];
     [s appendString:@"<UL>\n"];
-    [s appendString:@"<LI><a href=\"/hlrrequest\">hlrrequest</a></LI>\n"];
+    [s appendString:@"<LI><a href=\"/msc/sendRoutingInfoForSM\">sendRoutingInfoForSM</a></LI>\n"];
     [s appendString:@"<LI><a href=\"/status\">status</a></LI>\n"];
     [s appendString:@"</UL>\n"];
     [s appendString:@"</body>\n"];
@@ -610,31 +615,6 @@ static BOOL isRunningTests(void)
             }
         }
     }
-
-    NSArray *cs_configs = [config getMultiGroups:@"telnet"];
-    for(NSDictionary *cs_config in cs_configs)
-    {
-        if([cs_config configEnabledWithYesDefault])
-        {
-            NSString *name = [cs_config configName];
-            if(name)
-            {
-                int csPort = [[cs_config configEntry:@"port"] intValue];
-                if(csPort == 0)
-                {
-                    csPort = 7979;
-                }
-                TelnetSocket *cs = [[TelnetSocket alloc]init];
-                cs.localPort = csPort;
-                cs.delegate = self;
-                [cs startListener];
-            }
-            else
-            {
-                @throw(CONFIG_ERROR(@"TelnetSocket config without a name"));
-            }
-        }
-    }
 }
 
 
@@ -709,32 +689,11 @@ static BOOL isRunningTests(void)
         [status appendFormat:@"GSMMAP-INSTANCE:%@:%@\n",map.layerName,map.status];
     }
 
-    keys = [mapuser_dict allKeys];
-    for(NSString *key in keys)
-    {
-        MapUser *u = mapuser_dict[key];
-        [status appendFormat:@"MAPUSER-INSTANCE:%@:%@\n",u.layerName,u.status];
-    }
-
-    keys = [hlr_dict allKeys];
-    for(NSString *key in keys)
-    {
-        HLRInstance *v = hlr_dict[key];
-        [status appendFormat:@"HLR-INSTANCE:%@:%@\n",v.layerName,v.status];
-    }
-
     keys = [msc_dict allKeys];
     for(NSString *key in keys)
     {
         MSCInstance *v = msc_dict[key];
         [status appendFormat:@"MSC-INSTANCE:%@:%@\n",v.layerName,v.status];
-    }
-
-    keys = [vlr_dict allKeys];
-    for(NSString *key in keys)
-    {
-        VLRInstance *v = vlr_dict[key];
-        [status appendFormat:@"VLR-INSTANCE:%@:%@\n",v.layerName,v.status];
     }
     [req setResponsePlainText:status];
     return;
@@ -755,7 +714,7 @@ static BOOL isRunningTests(void)
     }
     s = [[NSMutableString alloc]init];
 
-    [s appendString:@"/*-- [START] css/mainarea.css --*/\n"];
+    [s appendString:@"/*-- [START] css/style.css --*/\n"];
     [s appendString:@"\n"];
     [s appendString:@"body\n"];
     [s appendString:@"{\n"];

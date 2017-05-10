@@ -6,13 +6,13 @@
 //  Copyright © 2017 Andreas Fink. All rights reserved.
 //
 
-
 #import <ulib/ulib.h>
-#import <ulibasn1/ulibasn1.h>
 #import <ulibgt/ulibgt.h>
+#import <ulibsccp/ulibsccp.h>
+#import <ulibtcap/ulibtcap.h>
 #import <ulibgsmmap/ulibgsmmap.h>
-#import <ulibpcap/ulibpcap.h>
-#import <ulibgsmmap/ulibgsmmap.h>
+
+@class UMPCAPFile;
 
 #import "WebMacros.h"
 
@@ -37,7 +37,6 @@
     UMASN1BitString *dialogProtocolVersion;
     NSMutableArray *sccp_sent;
     NSMutableArray *sccp_received;
-    BOOL sccpDebugEnabled;
     BOOL sccpTracefileEnabled;
     UMPCAPFile *pcap;
     NSTimeInterval timeoutValue;
@@ -52,7 +51,6 @@
     NSString *remoteTransactionId;
     NSDictionary *incomingOptions;
     UMSynchronizedArray *_components;
-    OutputFormat outputFormat;
     int         nowait;
     BOOL        undefinedTransaction;
     NSString    *transactionName;
@@ -93,7 +91,6 @@
 @property(readwrite,strong) NSDictionary *incomingOptions;
 @property(readwrite,strong) NSString *transactionId;
 @property(readwrite,strong) NSString *remoteTransactionId;
-@property(readwrite,assign) OutputFormat outputFormat;
 @property(readwrite,assign) BOOL doEnd;
 @property(readwrite,strong) UMPCAPFile *pcap;
 @property(readwrite,assign) int nowait;

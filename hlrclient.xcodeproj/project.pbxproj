@@ -23,6 +23,7 @@
 		A6AC7AF11EC2E06C009178B1 /* GenericTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AF01EC2E06C009178B1 /* GenericTransaction.m */; };
 		A6AC7AF71EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AF61EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.m */; };
 		A6AC7AFA1EC2E5BF009178B1 /* GenericInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AF91EC2E5BF009178B1 /* GenericInstance.m */; };
+		A6C3FAA31EC2F540009AE00A /* ulibpcap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C3FAA21EC2F540009AE00A /* ulibpcap.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +63,9 @@
 		A6AC7AF61EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCTransaction_SendRoutingInfoForSM.m; sourceTree = "<group>"; };
 		A6AC7AF81EC2E5BF009178B1 /* GenericInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericInstance.h; sourceTree = "<group>"; };
 		A6AC7AF91EC2E5BF009178B1 /* GenericInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericInstance.m; sourceTree = "<group>"; };
+		A6C3FAA21EC2F540009AE00A /* ulibpcap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibpcap.framework; path = ../../../../../Library/Frameworks/ulibpcap.framework; sourceTree = "<group>"; };
+		A6C3FAA41EC2FA77009AE00A /* hlrclient.conf */ = {isa = PBXFileReference; lastKnownFileType = text; name = hlrclient.conf; path = ../../../../../etc/hlrclient/hlrclient.conf; sourceTree = "<group>"; };
+		A6C3FAA51EC302A4009AE00A /* hlrclient.conf-example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "hlrclient.conf-example"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 			files = (
 				A6AC7AD61EC2DA2F009178B1 /* ulibsctp.framework in Frameworks */,
 				A6AC7ADB1EC2DA2F009178B1 /* ulibtcap.framework in Frameworks */,
+				A6C3FAA31EC2F540009AE00A /* ulibpcap.framework in Frameworks */,
 				A6AC7AB91EC2DA0D009178B1 /* ulib.framework in Frameworks */,
 				A6AC7AD21EC2DA2F009178B1 /* ulibm2pa.framework in Frameworks */,
 				A6AC7AD51EC2DA2F009178B1 /* ulibsccp.framework in Frameworks */,
@@ -87,6 +92,8 @@
 		A6AC7AA51EC2D9F5009178B1 = {
 			isa = PBXGroup;
 			children = (
+				A6C3FAA41EC2FA77009AE00A /* hlrclient.conf */,
+				A6C3FAA51EC302A4009AE00A /* hlrclient.conf-example */,
 				A6AC7AB01EC2D9F5009178B1 /* hlrclient */,
 				A6AC7AAF1EC2D9F5009178B1 /* Products */,
 				A6AC7AB81EC2DA0D009178B1 /* ulib.framework */,
@@ -98,6 +105,7 @@
 				A6AC7ABA1EC2DA2E009178B1 /* ulibasn1.framework */,
 				A6AC7AC91EC2DA2E009178B1 /* ulibtcap.framework */,
 				A6AC7ABE1EC2DA2E009178B1 /* ulibgsmmap.framework */,
+				A6C3FAA21EC2F540009AE00A /* ulibpcap.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -205,6 +213,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -253,6 +262,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -335,6 +345,7 @@
 				A6AC7AB71EC2D9F5009178B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,0 +1,5 @@
+#!/bin/bash
+# this script is called during the build process to generate header files such as version.h
+#
+echo "#define VERSION \"`cat VERSION`\"" > version.h
+

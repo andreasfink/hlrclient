@@ -1,0 +1,63 @@
+##
+# File: Makefile
+# Project "hlrclient"
+# (c) 2017 Andreas Fink
+# Create: Andreas Fink (andreas@fink.org)
+#
+#
+
+PROJECT_NAME=@PROJECT_NAME@
+VERSION=`cat VERSION`
+PROJECT_ID=me.fink.@PROJECT_NAME@
+
+XCODETARGET=hlrclient
+XCODESCHEME=hlrclient
+
+CC=@CC@
+CURRENT_DIR=`pwd`
+
+all: hlrclient-debug hlrclient-release
+
+hlrclient-debug:
+	rm -rf tmproot
+	mkdir tmproot
+	xcodebuild CFLAGS="-DHLRCLIENT=1" ${XCODESIGN} DSTROOT=tmproot -target ${XCODETARGET} -configuration Debug -scheme "${XCODESCHEME}" install
+	mv tmproot/usr/local/bin/hlrclient ./hlrclient-debug
+	rm -rf tmproot
+	
+hlrclient-release:
+	rm -rf tmproot
+	mkdir tmproot
+	xcodebuild CFLAGS="-DHLRCLIENT=1" ${XCODESIGN} DSTROOT=tmproot -target ${XCODETARGET} -configuration Release -scheme "${XCODESCHEME}"  install
+	mv tmproot/usr/local/bin/hlrclient ./hlrclient-release
+	rm -rf tmproot
+
+unlock:
+	security unlock-keychain ~/Library/Keychains/login.keychain
+
+clean:
+	xcodebuild ${XCODESIGN} -target ${XCODETARGET} -configuration Debug clean
+	xcodebuild ${XCODESIGN} -target ${XCODETARGET} -configuration Release clean
+
+install: hlrclient-release hlrclient-debug
+	-install -b -g bin -o root -m 755 ./hlrclient-release /usr/local/sbin/hlrclient-`cat VERSION`-release
+	-install -b -g bin -o root -m 755 ./hlrclient-debug   /usr/local/sbin/hlrclient-`cat VERSION`-debug
+
+docs_install:
+	make DSTROOT=$(DSTROOT) -f doc/Makefile install
+
+install_root_prepare: hlrclient-release hlrclient-debug
+	-rm -rf install_root
+	mkdir -p install_root/usr/local/sbin
+	mkdir -p install_root/var/log/hlrclient
+	mkdir -p install_root/var/run/hlrclient
+	mkdir -p install_scripts
+
+	-install -b -g bin -o root -m 755 ./hlrclient-release install_root/usr/local/sbin/hlrclient-`cat VERSION`-release
+	-install -b -g bin -o root -m 755 ./hlrclient-debug   install_root/usr/local/sbin/hlrclient-`cat VERSION`-debug
+
+pkg:	install_root_prepare
+	./make_pkg.sh "$(PROJECT_NAME)" "$(PROJECT_ID)" install_root "`cat VERSION`"
+
+pkg2: install_root_prepare
+	./make_pkg.sh "$(PROJECT_NAME)" "$(PROJECT_ID)" install_root "`cat VERSION`" "$(PROJECT_NAME).pkg"

@@ -8,7 +8,7 @@
 
 #import "GenericInstance.h"
 #import "GenericTransaction.h"
-
+#import "MSCInstance.h"
 @implementation GenericInstance
 @synthesize instanceAddress;
 @synthesize gsmMap;
@@ -393,30 +393,6 @@
 {
     @autoreleasepool
     {
-        /* pages requesting auth will have UMHTTP_AUTHENTICATION_STATUS_FAILED or UMHTTP_AUTHENTICATION_STATUS_PASSED
-         pages not requiring auth will have UMHTTP_AUTHENTICATION_STATUS_NOT_REQUESTED */
-
-        if(req.authenticationStatus == UMHTTP_AUTHENTICATION_STATUS_FAILED)
-        {
-            [req setResponsePlainText:@"not-authorization-vlr"];
-            [req setRequireAuthentication];
-            return;
-        }
-        /*
-         if(![req.connection.socket.connectedRemoteAddress isEqualToString:@"ipv4:localhost"])
-         {
-         }
-         */
-        NSDictionary *p = req.params;
-        int pcount=0;
-        for(NSString *n in p.allKeys)
-        {
-            if(([n isEqualToString:@"user"])  || ([n isEqualToString:@"pass"]))
-            {
-                continue;
-            }
-            pcount++;
-        }
         @try
         {
             NSString *path = req.url.relativePath;
@@ -424,7 +400,7 @@
             {
                 path = @"/msc";
             }
-            else if([path hasSuffix:@"/msc/"])
+            else if([path isEqualToString:@"/msc/"])
             {
                 path = @"/msc";
             }
@@ -443,7 +419,7 @@
 
             if([path isEqualToString:@"/msc"])
             {
-                [req setResponseHtmlString:[GenericInstance webIndexForm]];
+                [req setResponseHtmlString:[MSCInstance webIndexForm]];
             }
 
         }
@@ -516,4 +492,32 @@
 }
 
 
+
+- (void) MAP_Open_Ind:(NSString *)userIdentifier
+               dialog:(NSString *)dialogId
+          transaction:(NSString *)tcapTransactionId
+    remoteTransaction:(NSString *)tcapRemoteTransactionId
+                  map:(id<UMLayerGSMMAP_ProviderProtocol>)map
+              variant:(UMTCAP_Variant)xvariant
+       callingAddress:(SccpAddress *)src
+        calledAddress:(SccpAddress *)dst
+      dialoguePortion:(UMTCAP_asn1_dialoguePortion *)xdialoguePortion
+              options:(NSDictionary *)options
+{
+    
+}
+
+- (void) MAP_Open_Resp:(NSString *)uidstr
+                dialog:(NSString *)dialogId
+           transaction:(NSString *)tcapTransactionId
+     remoteTransaction:(NSString *)tcapRemoteTransactionId
+                   map:(id<UMLayerGSMMAP_ProviderProtocol>)map
+               variant:(UMTCAP_Variant)xvariant
+        callingAddress:(SccpAddress *)src
+         calledAddress:(SccpAddress *)dst
+       dialoguePortion:(UMTCAP_asn1_dialoguePortion *)xdialoguePortion
+               options:(NSDictionary *)xoptions
+{
+
+}
 @end

@@ -6,6 +6,10 @@
 //  Copyright © 2017 Andreas Fink. All rights reserved.
 //
 
+#import <ulib/ulib.h>
+#import <ulibgt/ulibgt.h>
+#import <ulibsccp/ulibsccp.h>
+#import <ulibtcap/ulibtcap.h>
 #import <ulibgsmmap/ulibgsmmap.h>
 
 @class GenericTransaction;

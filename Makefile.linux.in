@@ -1,0 +1,51 @@
+##
+# File: Makefile
+# Project "hlrclient"
+# (c) 2017 Andreas Fink
+# Create: Andreas Fink (andreas@fink.org)
+#
+#
+
+CC=@CC@
+CFLAGS=@CFLAGS@ -DHAVE_SSL
+CONFIGURATION=Release
+LDFLAGS=@LDFLAGS@
+LIBS=@LIBS@
+EXEDIR=/usr/local/sbin
+EXE=hlrclient
+LIBTOOL=ar rc
+RANLIB=ranlib
+BUILDNUMBER=`svn info | grep Revision | cut -f2 -d" "`
+
+MFILES =  $(wildcard hrlclient/*.m)
+OFILES = $(MFILES:.m=.m.o)
+
+INCLUDEDIRS=-Icnam -I.
+
+CURRENT_DIR=`pwd`
+
+all:	build/${EXE}
+
+build/${EXE}: ${OFILES}
+	mkdir -p build
+	${CC} -o build/${EXE} ${LDFLAGS} ${OFILES} ${LIBS} ${STATIC_LIBS}
+
+
+version.h:	VERSION
+	./make_version
+
+.SUFFIXES: .m.o .m
+
+clean:
+	rm -f build/$(EXE)  $(OFILES) 
+
+%.m.o:	%.m version.h
+	${CC} -c ${CFLAGS} ${DEBUG_RELEASE} -x objective-c $<  ${INCLUDEDIRS} -o $@
+
+install: build/$(EXE)
+	mkdir -p $(DESTDIR)/usr/local/sbin/
+	mkdir -p $(DESTDIR)/etc/init.d/
+	mkdir -p $(DESTDIR)/etc/systemd/system/
+	install -b -g bin -o root -m 755 build/$(EXE) $(DESTDIR)/usr/local/sbin/$(EXE)
+	if diff hlrclient.service $(DESTDIR)/etc/systemd/system/hlrclient.service >/dev/null; then echo "no change in hlrclient.service"; else install -b -g bin -o root -m 644 hlrclient.service $(DESTDIR)/etc/systemd/system/hlrclient.service; fi
+

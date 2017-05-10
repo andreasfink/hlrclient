@@ -6,14 +6,6 @@
 //  Copyright © 2017 Andreas Fink. All rights reserved.
 //
 
-
-#import <ulib/ulib.h>
-#import <ulibasn1/ulibasn1.h>
-#import <ulibgt/ulibgt.h>
-#import <ulibgsmmap/ulibgsmmap.h>
-#import <ulibpcap/ulibpcap.h>
-#import <ulibgsmmap/ulibgsmmap.h>
-
 #import "WebMacros.h"
 #import "GenericTransaction.h"
 

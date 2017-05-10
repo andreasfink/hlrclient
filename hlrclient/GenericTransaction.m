@@ -38,7 +38,6 @@
 @synthesize incomingOptions;
 @synthesize transactionId;
 @synthesize remoteTransactionId;
-@synthesize outputFormat;
 @synthesize doEnd;
 @synthesize pcap;
 @synthesize nowait;
@@ -211,7 +210,6 @@ return;\
         remoteTransactionId = ot.remoteTransactionId;
         incomingOptions = ot.incomingOptions;
         _components = ot.components;
-        outputFormat = ot.outputFormat;
         nowait = ot.nowait;
         undefinedTransaction = NO; /* we get called for overrided object here */
     }
@@ -538,11 +536,6 @@ return;\
         {
             [sccp_received addObject:xoptions[@"sccp-pdu"]];
         }
-        if((sccpTracefileEnabled) && (xoptions[@"sccp-pdu"]))
-        {
-            [pcap writePdu:[xoptions[@"sccp-pdu"] unhexedData]];
-        }
-
         dict[@"user-identifier"] = userIdentifier;
         dict[@"map-dialog-id"] = dialogId;
         dict[@"tcap-transaction-id"] = transactionId;
@@ -559,35 +552,20 @@ return;\
 
 - (void)outputResult2:(UMSynchronizedSortedDictionary *)dict
 {
-    if(sccpDebugEnabled)
+    NSString *json;
+    @try
     {
-        dict[@"sccp-sent" ]       = sccp_sent;
-        dict[@"sccp-received"]    = sccp_received;
+        json = [dict jsonString];
     }
-    if(sccpTracefileEnabled)
+    @catch(id err)
     {
-        NSData *data = [pcap dataAndClose];
-        [req setResponseHeader:@"Content-Type" withValue:@"application/octet-stream"];
-        [req setResponseHeader:@"Content-Disposition" withValue:@"attachment; filename=trace.pcap"];
-        [req setResponseData:data];
+        NSLog(@"%@",err);
     }
-    else
+    if(!json)
     {
-        NSString *json;
-        @try
-        {
-            json = [dict jsonString];
-        }
-        @catch(id err)
-        {
-            NSLog(@"%@",err);
-        }
-        if(!json)
-        {
-            json = [NSString stringWithFormat:@"json-encoding problem %@",dict];
-        }
-        [req setResponsePlainText:json];
+        json = [NSString stringWithFormat:@"json-encoding problem %@",dict];
     }
+    [req setResponsePlainText:json];
     [req resumePendingRequest];
 }
 
@@ -633,15 +611,6 @@ return;\
             sccp_info[@"sccp-local-address"] = localAddress.objectValue;
         }
         dict[@"sccp-info"] = sccp_info;
-
-        if((sccpDebugEnabled) && (xoptions[@"sccp-pdu"]))
-        {
-            [sccp_received addObject:xoptions[@"sccp-pdu"]];
-        }
-        if((sccpTracefileEnabled) && (xoptions[@"sccp-pdu"]))
-        {
-            [pcap writePdu:[xoptions[@"sccp-pdu"] unhexedData]];
-        }
 
         dict[@"user-identifier"] = userIdentifier;
         dict[@"map-dialog-id"] = dialogId;
@@ -707,15 +676,6 @@ return;\
             sccp_info[@"sccp-local-address"] = localAddress.objectValue;
         }
         dict[@"sccp-info"] = sccp_info;
-
-        if((sccpDebugEnabled) && (xoptions[@"sccp-pdu"]))
-        {
-            [sccp_received addObject:xoptions[@"sccp-pdu"]];
-        }
-        if((sccpTracefileEnabled) && (xoptions[@"sccp-pdu"]))
-        {
-            [pcap writePdu:[xoptions[@"sccp-pdu"] unhexedData]];
-        }
 
         dict[@"user-identifier"] = userIdentifier;
         dict[@"map-dialog-id"] = dialogId;
@@ -1030,15 +990,6 @@ return;\
             options[@"sccp-segment"] = @(YES);
         }
     }
-    if (p[@"sccp-debug"])
-    {
-        options[@"sccp-debug"] = @([p[@"sccp-debug"] boolValue]);
-    }
-    if (p[@"sccp-trace"])
-    {
-        options[@"sccp-trace"] = @([p[@"sccp-trace"] boolValue]);
-    }
-
     if (p[@"invoke-count"])
     {
         int i = [p[@"invoke-count"] intValue];
@@ -1053,31 +1004,6 @@ return;\
     if(_dpc)
     {
         options[@"dpc"] = _dpc;
-    }
-
-    if (p[@"output-format"])
-    {
-        NSString *s = [p[@"output-format"] stringValue];
-        if([s isEqualToString:@"json"])
-        {
-            outputFormat = OutputFormat_json;
-        }
-        else if([s isEqualToString:@"dict"])
-        {
-            outputFormat = OutputFormat_dict;
-        }
-        else if([s isEqualToString:@"none"])
-        {
-            outputFormat = OutputFormat_none;
-        }
-        else if([s isEqualToString:@"xml"])
-        {
-            outputFormat = OutputFormat_xml;
-        }
-        else if([s isEqualToString:@"rest"])
-        {
-            outputFormat = OutputFormat_rest;
-        }
     }
 
     if(p[@"nowait"]!=NULL)
@@ -1333,14 +1259,6 @@ return;\
     [s appendString:@"<tr>\n"];
     [s appendString:@"    <td class=optional>called-tt</td>\n"];
     [s appendString:@"    <td class=optional><input name=\"called-tt\" type=\"text\" value=\"0\"></td>\n"];
-    [s appendString:@"</tr>\n"];
-    [s appendString:@"<tr><td colspan=2 class=subtitle>SCCP Debugging</td></tr><tr>\n"];
-    [s appendString:@"	<td class=optional>sccp-debug</td>\n"];
-    [s appendString:@"	<td class=optional><input name=\"sccp-debug\" value=0></td>\n"];
-    [s appendString:@"</tr>\n"];
-    [s appendString:@"<tr>\n"];
-    [s appendString:@"	<td class=optional>sccp-trace</td>\n"];
-    [s appendString:@"	<td class=optional><input name=\"sccp-trace\" value=0></td>\n"];
     [s appendString:@"</tr>\n"];
 }
 
