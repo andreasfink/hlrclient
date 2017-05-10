@@ -3,7 +3,7 @@ HLR Client example using the UniversalSS7 library
 
 To use this example you need a M3UA connection to a signalling provider and a global title
 
-Install the universalSS7 library either from source or from the debian messagemover repository (see www.universalss7.com).
+Install the universalSS7 library either from source or from the debian messagemover repository (see www.universalss7.ch).
 On MacOS X you can simply install the pkg files instead (sctp, ulib, ulibsctp, ulibm2pa, ulibmtp3, ulibgt, ulibsccp, ulibasn1, ulibtcap, ulibgsmmap, ulibpcap) .
 
 then run
