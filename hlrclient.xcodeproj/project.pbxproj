@@ -8,6 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		A6AC7AB21EC2D9F5009178B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AB11EC2D9F5009178B1 /* main.m */; };
+		A6AC7AB91EC2DA0D009178B1 /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7AB81EC2DA0D009178B1 /* ulib.framework */; };
+		A6AC7ACC1EC2DA2E009178B1 /* ulibasn1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7ABA1EC2DA2E009178B1 /* ulibasn1.framework */; };
+		A6AC7AD01EC2DA2F009178B1 /* ulibgsmmap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7ABE1EC2DA2E009178B1 /* ulibgsmmap.framework */; };
+		A6AC7AD11EC2DA2F009178B1 /* ulibgt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7ABF1EC2DA2E009178B1 /* ulibgt.framework */; };
+		A6AC7AD21EC2DA2F009178B1 /* ulibm2pa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7AC01EC2DA2E009178B1 /* ulibm2pa.framework */; };
+		A6AC7AD31EC2DA2F009178B1 /* ulibmtp3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7AC11EC2DA2E009178B1 /* ulibmtp3.framework */; };
+		A6AC7AD51EC2DA2F009178B1 /* ulibsccp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7AC31EC2DA2E009178B1 /* ulibsccp.framework */; };
+		A6AC7AD61EC2DA2F009178B1 /* ulibsctp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7AC41EC2DA2E009178B1 /* ulibsctp.framework */; };
+		A6AC7ADB1EC2DA2F009178B1 /* ulibtcap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7AC91EC2DA2E009178B1 /* ulibtcap.framework */; };
+		A6AC7AE51EC2DAE9009178B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AE41EC2DAE9009178B1 /* AppDelegate.m */; };
+		A6AC7AE81EC2DD3F009178B1 /* MSCInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AE71EC2DD3F009178B1 /* MSCInstance.m */; };
+		A6AC7AEB1EC2DD4D009178B1 /* MSCTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AEA1EC2DD4D009178B1 /* MSCTransaction.m */; };
+		A6AC7AF11EC2E06C009178B1 /* GenericTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AF01EC2E06C009178B1 /* GenericTransaction.m */; };
+		A6AC7AF71EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AF61EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.m */; };
+		A6AC7AFA1EC2E5BF009178B1 /* GenericInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AF91EC2E5BF009178B1 /* GenericInstance.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +40,28 @@
 /* Begin PBXFileReference section */
 		A6AC7AAE1EC2D9F5009178B1 /* hlrclient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hlrclient; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6AC7AB11EC2D9F5009178B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A6AC7AB81EC2DA0D009178B1 /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = ../../../../../Library/Frameworks/ulib.framework; sourceTree = "<group>"; };
+		A6AC7ABA1EC2DA2E009178B1 /* ulibasn1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibasn1.framework; path = ../../../../../Library/Frameworks/ulibasn1.framework; sourceTree = "<group>"; };
+		A6AC7ABE1EC2DA2E009178B1 /* ulibgsmmap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibgsmmap.framework; path = ../../../../../Library/Frameworks/ulibgsmmap.framework; sourceTree = "<group>"; };
+		A6AC7ABF1EC2DA2E009178B1 /* ulibgt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibgt.framework; path = ../../../../../Library/Frameworks/ulibgt.framework; sourceTree = "<group>"; };
+		A6AC7AC01EC2DA2E009178B1 /* ulibm2pa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibm2pa.framework; path = ../../../../../Library/Frameworks/ulibm2pa.framework; sourceTree = "<group>"; };
+		A6AC7AC11EC2DA2E009178B1 /* ulibmtp3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibmtp3.framework; path = ../../../../../Library/Frameworks/ulibmtp3.framework; sourceTree = "<group>"; };
+		A6AC7AC31EC2DA2E009178B1 /* ulibsccp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibsccp.framework; path = ../../../../../Library/Frameworks/ulibsccp.framework; sourceTree = "<group>"; };
+		A6AC7AC41EC2DA2E009178B1 /* ulibsctp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibsctp.framework; path = ../../../../../Library/Frameworks/ulibsctp.framework; sourceTree = "<group>"; };
+		A6AC7AC91EC2DA2E009178B1 /* ulibtcap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibtcap.framework; path = ../../../../../Library/Frameworks/ulibtcap.framework; sourceTree = "<group>"; };
+		A6AC7AE31EC2DAE9009178B1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A6AC7AE41EC2DAE9009178B1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A6AC7AE61EC2DD3F009178B1 /* MSCInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCInstance.h; sourceTree = "<group>"; };
+		A6AC7AE71EC2DD3F009178B1 /* MSCInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCInstance.m; sourceTree = "<group>"; };
+		A6AC7AE91EC2DD4D009178B1 /* MSCTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCTransaction.h; sourceTree = "<group>"; };
+		A6AC7AEA1EC2DD4D009178B1 /* MSCTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCTransaction.m; sourceTree = "<group>"; };
+		A6AC7AEF1EC2E06C009178B1 /* GenericTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericTransaction.h; sourceTree = "<group>"; };
+		A6AC7AF01EC2E06C009178B1 /* GenericTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericTransaction.m; sourceTree = "<group>"; };
+		A6AC7AF21EC2E110009178B1 /* WebMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebMacros.h; sourceTree = "<group>"; };
+		A6AC7AF51EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCTransaction_SendRoutingInfoForSM.h; sourceTree = "<group>"; };
+		A6AC7AF61EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCTransaction_SendRoutingInfoForSM.m; sourceTree = "<group>"; };
+		A6AC7AF81EC2E5BF009178B1 /* GenericInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericInstance.h; sourceTree = "<group>"; };
+		A6AC7AF91EC2E5BF009178B1 /* GenericInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericInstance.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +69,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6AC7AD61EC2DA2F009178B1 /* ulibsctp.framework in Frameworks */,
+				A6AC7ADB1EC2DA2F009178B1 /* ulibtcap.framework in Frameworks */,
+				A6AC7AB91EC2DA0D009178B1 /* ulib.framework in Frameworks */,
+				A6AC7AD21EC2DA2F009178B1 /* ulibm2pa.framework in Frameworks */,
+				A6AC7AD51EC2DA2F009178B1 /* ulibsccp.framework in Frameworks */,
+				A6AC7AD31EC2DA2F009178B1 /* ulibmtp3.framework in Frameworks */,
+				A6AC7AD01EC2DA2F009178B1 /* ulibgsmmap.framework in Frameworks */,
+				A6AC7ACC1EC2DA2E009178B1 /* ulibasn1.framework in Frameworks */,
+				A6AC7AD11EC2DA2F009178B1 /* ulibgt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +89,15 @@
 			children = (
 				A6AC7AB01EC2D9F5009178B1 /* hlrclient */,
 				A6AC7AAF1EC2D9F5009178B1 /* Products */,
+				A6AC7AB81EC2DA0D009178B1 /* ulib.framework */,
+				A6AC7AC41EC2DA2E009178B1 /* ulibsctp.framework */,
+				A6AC7AC01EC2DA2E009178B1 /* ulibm2pa.framework */,
+				A6AC7AC11EC2DA2E009178B1 /* ulibmtp3.framework */,
+				A6AC7ABF1EC2DA2E009178B1 /* ulibgt.framework */,
+				A6AC7AC31EC2DA2E009178B1 /* ulibsccp.framework */,
+				A6AC7ABA1EC2DA2E009178B1 /* ulibasn1.framework */,
+				A6AC7AC91EC2DA2E009178B1 /* ulibtcap.framework */,
+				A6AC7ABE1EC2DA2E009178B1 /* ulibgsmmap.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +113,19 @@
 			isa = PBXGroup;
 			children = (
 				A6AC7AB11EC2D9F5009178B1 /* main.m */,
+				A6AC7AE31EC2DAE9009178B1 /* AppDelegate.h */,
+				A6AC7AE41EC2DAE9009178B1 /* AppDelegate.m */,
+				A6AC7AF81EC2E5BF009178B1 /* GenericInstance.h */,
+				A6AC7AF91EC2E5BF009178B1 /* GenericInstance.m */,
+				A6AC7AEF1EC2E06C009178B1 /* GenericTransaction.h */,
+				A6AC7AF01EC2E06C009178B1 /* GenericTransaction.m */,
+				A6AC7AE61EC2DD3F009178B1 /* MSCInstance.h */,
+				A6AC7AE71EC2DD3F009178B1 /* MSCInstance.m */,
+				A6AC7AE91EC2DD4D009178B1 /* MSCTransaction.h */,
+				A6AC7AEA1EC2DD4D009178B1 /* MSCTransaction.m */,
+				A6AC7AF51EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.h */,
+				A6AC7AF61EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.m */,
+				A6AC7AF21EC2E110009178B1 /* WebMacros.h */,
 			);
 			path = hlrclient;
 			sourceTree = "<group>";
@@ -120,6 +188,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6AC7AF71EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.m in Sources */,
+				A6AC7AFA1EC2E5BF009178B1 /* GenericInstance.m in Sources */,
+				A6AC7AEB1EC2DD4D009178B1 /* MSCTransaction.m in Sources */,
+				A6AC7AE51EC2DAE9009178B1 /* AppDelegate.m in Sources */,
+				A6AC7AF11EC2E06C009178B1 /* GenericTransaction.m in Sources */,
+				A6AC7AE81EC2DD3F009178B1 /* MSCInstance.m in Sources */,
 				A6AC7AB21EC2D9F5009178B1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,7 +293,12 @@
 		A6AC7AB61EC2D9F5009178B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -227,7 +306,12 @@
 		A6AC7AB71EC2D9F5009178B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
