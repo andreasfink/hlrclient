@@ -2351,7 +2351,7 @@ then
 fi
 
 
-DEPENDENT_PKGCONFIGS="ulibss7config ulibsms"
+DEPENDENT_PKGCONFIGS="ulibss7config ulibsms uliblicense"
 
 
 

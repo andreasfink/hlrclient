@@ -28,7 +28,7 @@ all:	build/${EXE}
 
 build/${EXE}: ${OFILES}
 	mkdir -p build
-	${CC} -o build/${EXE} ${LDFLAGS} ${OFILES} ${LIBS} ${STATIC_LIBS}
+	${CC} -ObjC -o build/${EXE} ${LDFLAGS} ${OFILES} ${LIBS} ${STATIC_LIBS}
 
 
 version.h:	VERSION
