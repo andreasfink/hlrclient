@@ -1,17 +1,18 @@
 //
 //  MSCInstance.m
-//  hlrclient
+//  hrlclient
 //
-//  Created by Andreas Fink on 10.05.17.
-//  Copyright © 2017 Andreas Fink. All rights reserved.
+//  Created by Andreas Fink on 07.11.16.
+//  Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
 //
-
 
 #import "MSCInstance.h"
-#import "MSCTransaction.h"
-#import "MSCTransaction_SendRoutingInfoForSM.h"
-
+#import "MSCSession.h"
+#import "MSCSession_SendRoutingInfoForSM.h"
+#import <ulibsms/ulibsms.h>
+#import "AppDelegate.h"
 @implementation MSCInstance
+
 
 - (NSString *)instancePrefix
 {
@@ -21,65 +22,62 @@
 #pragma mark -
 #pragma mark handle incoming components
 
--(void) MAP_Invoke_Ind:(UMASN1Object *)param
-                userId:(NSString *)userIdentifier
-                dialog:(NSString *)xdialogId
-           transaction:(NSString *)tcapTransactionId
-                opCode:(UMLayerGSMMAP_OpCode *)xopcode
-              invokeId:(int64_t)xinvokeId
-              linkedId:(int64_t)xlinkedId
-                  last:(BOOL)xlast
-               options:(NSDictionary *)xoptions
-{
-    NSLog(@"MSCInstance: MAP_Invoke_Ind  userIdentifier:%@ dialog: %@ opcode:%d", userIdentifier,xdialogId,(int)xopcode.operation);
-    MSCTransaction *t = (MSCTransaction *)[self transactionById:userIdentifier];
-    if(t==NULL)
-    {
-        NSLog(@"incoming MAP_Invoke_Ind for unknown userIdentifier %@",userIdentifier);
-        return;
-    }
-    NSLog(@"MSCInstance: found transaction %@", [t description]);
-    t.dialogId = xdialogId;
-    if(t.undefinedTransaction==YES) /* we have a generic transaction, lets make it specific */
-    {
-        switch(xopcode.operation)
-        {
-            default:
-                NSLog(@"MSCInstance: unknown opcode");
-        }
-        t.opcode = xopcode;
-        /* we have changed the transaction from a unknown generic one to a specific object */
-        /* so we need to restore that type of object here */
-        /* note: the undefinedTransaction is not copied so it now becomes NO if it was YES */
-        [self addTransaction:t userId:userIdentifier];
-    }
-    [t MAP_Invoke_Ind:param
-               userId:userIdentifier
-               dialog:xdialogId
-          transaction:tcapTransactionId
-               opCode:xopcode
-             invokeId:xinvokeId
-             linkedId:xlinkedId
-                 last:xlast
-              options:xoptions];
-
-}
-
-
-
 
 - (UMHTTPAuthenticationStatus)httpAuthenticateRequest:(UMHTTPRequest *)req
                                                 realm:(NSString **)realm
 {
-    return UMHTTP_AUTHENTICATION_STATUS_NOT_REQUESTED;
+    UMHTTPAuthenticationStatus status = [super httpAuthenticateRequest:req realm:realm];
+    if(status == UMHTTP_AUTHENTICATION_STATUS_PASSED)
+    {
+        return status;
+    }
+    if([req.path isEqualToString:@"/msc"])
+    {
+        return UMHTTP_AUTHENTICATION_STATUS_NOT_REQUESTED;
+    }
+    else if([req.path isEqualToString:@"/msc/"])
+    {
+        return UMHTTP_AUTHENTICATION_STATUS_NOT_REQUESTED;
+    }
+    else if([req.path isEqualToString:@"/msc/index.html"])
+    {
+        return UMHTTP_AUTHENTICATION_STATUS_NOT_REQUESTED;
+    }
+    else if([req.path isEqualToString:@"/msc/index.php"])
+    {
+        return UMHTTP_AUTHENTICATION_STATUS_NOT_REQUESTED;
+    }
+    return UMHTTP_AUTHENTICATION_STATUS_FAILED;
 }
 
 - (void)  httpGetPost:(UMHTTPRequest *)req
 {
     @autoreleasepool
     {
+        /* pages requesting auth will have UMHTTP_AUTHENTICATION_STATUS_FAILED or UMHTTP_AUTHENTICATION_STATUS_PASSED
+         pages not requiring auth will have UMHTTP_AUTHENTICATION_STATUS_NOT_REQUESTED */
+        
+        if(req.authenticationStatus == UMHTTP_AUTHENTICATION_STATUS_FAILED)
+        {
+            [req setResponsePlainText:@"not-authorization-vlr"];
+            [req setRequireAuthentication];
+            return;
+        }
+        /*
+         if(![req.connection.socket.connectedRemoteAddress isEqualToString:@"ipv4:localhost"])
+         {
+         }
+         */
         NSDictionary *p = req.params;
-        int pcount= (int)[p.allKeys count];
+        int pcount=0;
+        for(NSString *n in p.allKeys)
+        {
+            if(([n isEqualToString:@"user"])  || ([n isEqualToString:@"pass"]))
+            {
+                continue;
+            }
+            pcount++;
+        }
         @try
         {
             NSString *path = req.url.relativePath;
@@ -106,16 +104,15 @@
             {
                 [req setResponseHtmlString:[MSCInstance webIndexForm]];
             }
-
             else if([path isEqualToStringCaseInsensitive:@"/msc/sendRoutingInfoForSM"])
             {
                 if(pcount==0)
                 {
-                    [req setResponseHtmlString:[MSCTransaction_SendRoutingInfoForSM webForm]];
+                    [req setResponseHtmlString:[MSCSession_SendRoutingInfoForSM webForm:0]];
                 }
                 else
                 {
-                    MSCTransaction_SendRoutingInfoForSM *t = [[MSCTransaction_SendRoutingInfoForSM alloc]initWithHttpReq:req
+                    MSCSession_SendRoutingInfoForSM *t = [[MSCSession_SendRoutingInfoForSM alloc]initWithHttpReq:req
                                                                                                                 instance:self];
                     [self queueFromUpper:t];
                 }
@@ -123,7 +120,7 @@
         }
         @catch(NSException *e)
         {
-
+            
             NSMutableDictionary *d1 = [[NSMutableDictionary alloc]init];
             if(e.name)
             {
@@ -146,13 +143,13 @@
 + (NSString *)webIndexForm
 {
     static NSMutableString *s = NULL;
-
+    
     if(s)
     {
         return s;
     }
     s = [[NSMutableString alloc]init];
-    [GenericInstance webHeader:s title:@"MSC"];
+    [SS7GenericInstance webHeader:s title:@"MSC"];
     [s appendString:@"<a href=\"/\">main menu</a>\n"];
     [s appendString:@"<h2>MSC Menu</h2>\n"];
     [s appendString:@"<UL>\n"];
@@ -163,39 +160,18 @@
     return s;
 }
 
-
 -(void) setConfig:(NSDictionary *)cfg applicationContext:(id)appContext
 {
     [super setConfig:cfg applicationContext:appContext];
 }
 
 
-
-- (void) MAP_Open_Ind:(NSString *)userIdentifier
-               dialog:(NSString *)dialogId
-          transaction:(NSString *)tcapTransactionId
-    remoteTransaction:(NSString *)tcapRemoteTransactionId
-                  map:(id<UMLayerGSMMAP_ProviderProtocol>)map
-              variant:(UMTCAP_Variant)xvariant
-       callingAddress:(SccpAddress *)src
-        calledAddress:(SccpAddress *)dst
-      dialoguePortion:(UMTCAP_asn1_dialoguePortion *)xdialoguePortion
-              options:(NSDictionary *)options
+- (void)urlLoadCompletedForReference:(id)ref data:(NSData *)data status:(NSInteger)statusCode
 {
-
 }
 
-- (void) MAP_Open_Resp:(NSString *)uidstr
-                dialog:(NSString *)dialogId
-           transaction:(NSString *)tcapTransactionId
-     remoteTransaction:(NSString *)tcapRemoteTransactionId
-                   map:(id<UMLayerGSMMAP_ProviderProtocol>)map
-               variant:(UMTCAP_Variant)xvariant
-        callingAddress:(SccpAddress *)src
-         calledAddress:(SccpAddress *)dst
-       dialoguePortion:(UMTCAP_asn1_dialoguePortion *)xdialoguePortion
-               options:(NSDictionary *)xoptions
+- (void)httpRequestTimeout:(UMHTTPRequest *)req
 {
-    
 }
+
 @end

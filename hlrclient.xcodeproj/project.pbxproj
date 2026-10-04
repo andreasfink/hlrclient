@@ -3,27 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A6AC7AB21EC2D9F5009178B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AB11EC2D9F5009178B1 /* main.m */; };
-		A6AC7AB91EC2DA0D009178B1 /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7AB81EC2DA0D009178B1 /* ulib.framework */; };
-		A6AC7ACC1EC2DA2E009178B1 /* ulibasn1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7ABA1EC2DA2E009178B1 /* ulibasn1.framework */; };
-		A6AC7AD01EC2DA2F009178B1 /* ulibgsmmap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7ABE1EC2DA2E009178B1 /* ulibgsmmap.framework */; };
-		A6AC7AD11EC2DA2F009178B1 /* ulibgt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7ABF1EC2DA2E009178B1 /* ulibgt.framework */; };
-		A6AC7AD21EC2DA2F009178B1 /* ulibm2pa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7AC01EC2DA2E009178B1 /* ulibm2pa.framework */; };
-		A6AC7AD31EC2DA2F009178B1 /* ulibmtp3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7AC11EC2DA2E009178B1 /* ulibmtp3.framework */; };
-		A6AC7AD51EC2DA2F009178B1 /* ulibsccp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7AC31EC2DA2E009178B1 /* ulibsccp.framework */; };
-		A6AC7AD61EC2DA2F009178B1 /* ulibsctp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7AC41EC2DA2E009178B1 /* ulibsctp.framework */; };
-		A6AC7ADB1EC2DA2F009178B1 /* ulibtcap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AC7AC91EC2DA2E009178B1 /* ulibtcap.framework */; };
 		A6AC7AE51EC2DAE9009178B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AE41EC2DAE9009178B1 /* AppDelegate.m */; };
 		A6AC7AE81EC2DD3F009178B1 /* MSCInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AE71EC2DD3F009178B1 /* MSCInstance.m */; };
-		A6AC7AEB1EC2DD4D009178B1 /* MSCTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AEA1EC2DD4D009178B1 /* MSCTransaction.m */; };
-		A6AC7AF11EC2E06C009178B1 /* GenericTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AF01EC2E06C009178B1 /* GenericTransaction.m */; };
-		A6AC7AF71EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AF61EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.m */; };
-		A6AC7AFA1EC2E5BF009178B1 /* GenericInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AC7AF91EC2E5BF009178B1 /* GenericInstance.m */; };
-		A6C3FAA31EC2F540009AE00A /* ulibpcap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C3FAA21EC2F540009AE00A /* ulibpcap.framework */; };
+		A6D2C36F307227E80022E504 /* libulib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D2C36E307227E80022E504 /* libulib.a */; };
+		A6D2C373307227FF0022E504 /* libulibsccp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D2C372307227FF0022E504 /* libulibsccp.a */; };
+		A6D2C3753072280C0022E504 /* libulibmtp3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D2C3743072280C0022E504 /* libulibmtp3.a */; };
+		A6D2C3773072281B0022E504 /* libulibtcap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D2C3763072281B0022E504 /* libulibtcap.a */; };
+		A6D2C3793072282E0022E504 /* libulibss7config.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D2C3783072282E0022E504 /* libulibss7config.a */; };
+		A6D2CBB03072293C0022E504 /* MSCSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D2CBAF3072293C0022E504 /* MSCSession.m */; };
+		A6D2CBB5307229AB0022E504 /* MSCSession_SendRoutingInfoForSM.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D2CBB4307229AB0022E504 /* MSCSession_SendRoutingInfoForSM.m */; };
+		A6D2CBB730722EC20022E504 /* libulibgsmmap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D2CBB630722EC20022E504 /* libulibgsmmap.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,31 +35,23 @@
 /* Begin PBXFileReference section */
 		A6AC7AAE1EC2D9F5009178B1 /* hlrclient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hlrclient; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6AC7AB11EC2D9F5009178B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A6AC7AB81EC2DA0D009178B1 /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = ../../../../../Library/Frameworks/ulib.framework; sourceTree = "<group>"; };
-		A6AC7ABA1EC2DA2E009178B1 /* ulibasn1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibasn1.framework; path = ../../../../../Library/Frameworks/ulibasn1.framework; sourceTree = "<group>"; };
-		A6AC7ABE1EC2DA2E009178B1 /* ulibgsmmap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibgsmmap.framework; path = ../../../../../Library/Frameworks/ulibgsmmap.framework; sourceTree = "<group>"; };
-		A6AC7ABF1EC2DA2E009178B1 /* ulibgt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibgt.framework; path = ../../../../../Library/Frameworks/ulibgt.framework; sourceTree = "<group>"; };
-		A6AC7AC01EC2DA2E009178B1 /* ulibm2pa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibm2pa.framework; path = ../../../../../Library/Frameworks/ulibm2pa.framework; sourceTree = "<group>"; };
-		A6AC7AC11EC2DA2E009178B1 /* ulibmtp3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibmtp3.framework; path = ../../../../../Library/Frameworks/ulibmtp3.framework; sourceTree = "<group>"; };
-		A6AC7AC31EC2DA2E009178B1 /* ulibsccp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibsccp.framework; path = ../../../../../Library/Frameworks/ulibsccp.framework; sourceTree = "<group>"; };
-		A6AC7AC41EC2DA2E009178B1 /* ulibsctp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibsctp.framework; path = ../../../../../Library/Frameworks/ulibsctp.framework; sourceTree = "<group>"; };
-		A6AC7AC91EC2DA2E009178B1 /* ulibtcap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibtcap.framework; path = ../../../../../Library/Frameworks/ulibtcap.framework; sourceTree = "<group>"; };
 		A6AC7AE31EC2DAE9009178B1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A6AC7AE41EC2DAE9009178B1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A6AC7AE61EC2DD3F009178B1 /* MSCInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCInstance.h; sourceTree = "<group>"; };
 		A6AC7AE71EC2DD3F009178B1 /* MSCInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCInstance.m; sourceTree = "<group>"; };
-		A6AC7AE91EC2DD4D009178B1 /* MSCTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCTransaction.h; sourceTree = "<group>"; };
-		A6AC7AEA1EC2DD4D009178B1 /* MSCTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCTransaction.m; sourceTree = "<group>"; };
-		A6AC7AEF1EC2E06C009178B1 /* GenericTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericTransaction.h; sourceTree = "<group>"; };
-		A6AC7AF01EC2E06C009178B1 /* GenericTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericTransaction.m; sourceTree = "<group>"; };
 		A6AC7AF21EC2E110009178B1 /* WebMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebMacros.h; sourceTree = "<group>"; };
-		A6AC7AF51EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCTransaction_SendRoutingInfoForSM.h; sourceTree = "<group>"; };
-		A6AC7AF61EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCTransaction_SendRoutingInfoForSM.m; sourceTree = "<group>"; };
-		A6AC7AF81EC2E5BF009178B1 /* GenericInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericInstance.h; sourceTree = "<group>"; };
-		A6AC7AF91EC2E5BF009178B1 /* GenericInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericInstance.m; sourceTree = "<group>"; };
-		A6C3FAA21EC2F540009AE00A /* ulibpcap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulibpcap.framework; path = ../../../../../Library/Frameworks/ulibpcap.framework; sourceTree = "<group>"; };
 		A6C3FAA41EC2FA77009AE00A /* hlrclient.conf */ = {isa = PBXFileReference; lastKnownFileType = text; name = hlrclient.conf; path = ../../../../../etc/hlrclient/hlrclient.conf; sourceTree = "<group>"; };
 		A6C3FAA51EC302A4009AE00A /* hlrclient.conf-example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "hlrclient.conf-example"; sourceTree = SOURCE_ROOT; };
+		A6D2C36E307227E80022E504 /* libulib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libulib.a; path = /usr/local/lib/libulib.a; sourceTree = "<absolute>"; };
+		A6D2C372307227FF0022E504 /* libulibsccp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libulibsccp.a; path = /usr/local/lib/libulibsccp.a; sourceTree = "<absolute>"; };
+		A6D2C3743072280C0022E504 /* libulibmtp3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libulibmtp3.a; path = /usr/local/lib/libulibmtp3.a; sourceTree = "<absolute>"; };
+		A6D2C3763072281B0022E504 /* libulibtcap.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libulibtcap.a; path = /usr/local/lib/libulibtcap.a; sourceTree = "<absolute>"; };
+		A6D2C3783072282E0022E504 /* libulibss7config.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libulibss7config.a; path = /usr/local/lib/libulibss7config.a; sourceTree = "<absolute>"; };
+		A6D2CBAE3072293C0022E504 /* MSCSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSCSession.h; sourceTree = "<group>"; };
+		A6D2CBAF3072293C0022E504 /* MSCSession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSCSession.m; sourceTree = "<group>"; };
+		A6D2CBB3307229AB0022E504 /* MSCSession_SendRoutingInfoForSM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSCSession_SendRoutingInfoForSM.h; sourceTree = "<group>"; };
+		A6D2CBB4307229AB0022E504 /* MSCSession_SendRoutingInfoForSM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSCSession_SendRoutingInfoForSM.m; sourceTree = "<group>"; };
+		A6D2CBB630722EC20022E504 /* libulibgsmmap.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libulibgsmmap.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,16 +59,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6AC7AD61EC2DA2F009178B1 /* ulibsctp.framework in Frameworks */,
-				A6AC7ADB1EC2DA2F009178B1 /* ulibtcap.framework in Frameworks */,
-				A6C3FAA31EC2F540009AE00A /* ulibpcap.framework in Frameworks */,
-				A6AC7AB91EC2DA0D009178B1 /* ulib.framework in Frameworks */,
-				A6AC7AD21EC2DA2F009178B1 /* ulibm2pa.framework in Frameworks */,
-				A6AC7AD51EC2DA2F009178B1 /* ulibsccp.framework in Frameworks */,
-				A6AC7AD31EC2DA2F009178B1 /* ulibmtp3.framework in Frameworks */,
-				A6AC7AD01EC2DA2F009178B1 /* ulibgsmmap.framework in Frameworks */,
-				A6AC7ACC1EC2DA2E009178B1 /* ulibasn1.framework in Frameworks */,
-				A6AC7AD11EC2DA2F009178B1 /* ulibgt.framework in Frameworks */,
+				A6D2C3793072282E0022E504 /* libulibss7config.a in Frameworks */,
+				A6D2C3753072280C0022E504 /* libulibmtp3.a in Frameworks */,
+				A6D2CBB730722EC20022E504 /* libulibgsmmap.a in Frameworks */,
+				A6D2C373307227FF0022E504 /* libulibsccp.a in Frameworks */,
+				A6D2C36F307227E80022E504 /* libulib.a in Frameworks */,
+				A6D2C3773072281B0022E504 /* libulibtcap.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,18 +76,9 @@
 			children = (
 				A6C3FAA41EC2FA77009AE00A /* hlrclient.conf */,
 				A6C3FAA51EC302A4009AE00A /* hlrclient.conf-example */,
+				A6D2C36D307227BF0022E504 /* Libraries */,
 				A6AC7AB01EC2D9F5009178B1 /* hlrclient */,
 				A6AC7AAF1EC2D9F5009178B1 /* Products */,
-				A6AC7AB81EC2DA0D009178B1 /* ulib.framework */,
-				A6AC7AC41EC2DA2E009178B1 /* ulibsctp.framework */,
-				A6AC7AC01EC2DA2E009178B1 /* ulibm2pa.framework */,
-				A6AC7AC11EC2DA2E009178B1 /* ulibmtp3.framework */,
-				A6AC7ABF1EC2DA2E009178B1 /* ulibgt.framework */,
-				A6AC7AC31EC2DA2E009178B1 /* ulibsccp.framework */,
-				A6AC7ABA1EC2DA2E009178B1 /* ulibasn1.framework */,
-				A6AC7AC91EC2DA2E009178B1 /* ulibtcap.framework */,
-				A6AC7ABE1EC2DA2E009178B1 /* ulibgsmmap.framework */,
-				A6C3FAA21EC2F540009AE00A /* ulibpcap.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,19 +96,28 @@
 				A6AC7AB11EC2D9F5009178B1 /* main.m */,
 				A6AC7AE31EC2DAE9009178B1 /* AppDelegate.h */,
 				A6AC7AE41EC2DAE9009178B1 /* AppDelegate.m */,
-				A6AC7AF81EC2E5BF009178B1 /* GenericInstance.h */,
-				A6AC7AF91EC2E5BF009178B1 /* GenericInstance.m */,
-				A6AC7AEF1EC2E06C009178B1 /* GenericTransaction.h */,
-				A6AC7AF01EC2E06C009178B1 /* GenericTransaction.m */,
 				A6AC7AE61EC2DD3F009178B1 /* MSCInstance.h */,
+				A6D2CBAE3072293C0022E504 /* MSCSession.h */,
+				A6D2CBAF3072293C0022E504 /* MSCSession.m */,
+				A6D2CBB3307229AB0022E504 /* MSCSession_SendRoutingInfoForSM.h */,
+				A6D2CBB4307229AB0022E504 /* MSCSession_SendRoutingInfoForSM.m */,
 				A6AC7AE71EC2DD3F009178B1 /* MSCInstance.m */,
-				A6AC7AE91EC2DD4D009178B1 /* MSCTransaction.h */,
-				A6AC7AEA1EC2DD4D009178B1 /* MSCTransaction.m */,
-				A6AC7AF51EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.h */,
-				A6AC7AF61EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.m */,
 				A6AC7AF21EC2E110009178B1 /* WebMacros.h */,
 			);
 			path = hlrclient;
+			sourceTree = "<group>";
+		};
+		A6D2C36D307227BF0022E504 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				A6D2C36E307227E80022E504 /* libulib.a */,
+				A6D2C3743072280C0022E504 /* libulibmtp3.a */,
+				A6D2C372307227FF0022E504 /* libulibsccp.a */,
+				A6D2C3763072281B0022E504 /* libulibtcap.a */,
+				A6D2CBB630722EC20022E504 /* libulibgsmmap.a */,
+				A6D2C3783072282E0022E504 /* libulibss7config.a */,
+			);
+			path = Libraries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,7 +146,8 @@
 		A6AC7AA61EC2D9F5009178B1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2700;
 				ORGANIZATIONNAME = "Andreas Fink";
 				TargetAttributes = {
 					A6AC7AAD1EC2D9F5009178B1 = {
@@ -179,6 +162,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = A6AC7AA51EC2D9F5009178B1;
@@ -196,12 +180,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6AC7AF71EC2E274009178B1 /* MSCTransaction_SendRoutingInfoForSM.m in Sources */,
-				A6AC7AFA1EC2E5BF009178B1 /* GenericInstance.m in Sources */,
-				A6AC7AEB1EC2DD4D009178B1 /* MSCTransaction.m in Sources */,
 				A6AC7AE51EC2DAE9009178B1 /* AppDelegate.m in Sources */,
-				A6AC7AF11EC2E06C009178B1 /* GenericTransaction.m in Sources */,
+				A6D2CBB5307229AB0022E504 /* MSCSession_SendRoutingInfoForSM.m in Sources */,
 				A6AC7AE81EC2DD3F009178B1 /* MSCInstance.m in Sources */,
+				A6D2CBB03072293C0022E504 /* MSCSession.m in Sources */,
 				A6AC7AB21EC2D9F5009178B1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,29 +196,42 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2GSNWPNR77;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -251,10 +246,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = /usr/local/include;
+				USER_HEADER_SEARCH_PATHS = /usr/local/include;
 			};
 			name = Debug;
 		};
@@ -263,29 +263,42 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2GSNWPNR77;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -294,9 +307,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = /usr/local/include;
+				USER_HEADER_SEARCH_PATHS = /usr/local/include;
 			};
 			name = Release;
 		};
@@ -304,10 +322,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				DEVELOPMENT_TEAM = 2GSNWPNR77;
-				FRAMEWORK_SEARCH_PATHS = (
+				DEAD_CODE_STRIPPING = YES;
+				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Libraries",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -317,10 +335,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				DEVELOPMENT_TEAM = 2GSNWPNR77;
-				FRAMEWORK_SEARCH_PATHS = (
+				DEAD_CODE_STRIPPING = YES;
+				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Libraries",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
