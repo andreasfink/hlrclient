@@ -115,12 +115,6 @@
     [s appendString:@"    <td class=optional>smsc</td>\n"];
     [s appendString:@"    <td class=optional><input name=\"smsc\" type=text placeholder=\"+12345678\" value=\"default\"> E.164 Number</td>\n"];
     [s appendString:@"</tr>\n"];
-    
-    [s appendString:@"<tr>\n"];
-    [s appendString:@"    <td class=optional>smsc-b</td>\n"];
-    [s appendString:@"    <td class=optional><input name=\"smsc-b\" type=text placeholder=\"+12345678\" value=\"\"> E.164 Number</td>\n"];
-    [s appendString:@"</tr>\n"];
-
 
     [s appendString:@"<tr>\n"];
     [s appendString:@"    <td class=optional>gprs-suppport-indicator</td>\n"];
