@@ -9,6 +9,7 @@
 
 #import "AppDelegate.h"
 #import <ulibss7config/ulibss7config.h>
+#import <uliblicense/uliblicense.h>
 
 #import "MSCInstance.h"
 
@@ -37,6 +38,15 @@
     self = [super initWithOptions:appOptions];
     if(self)
     {
+        _coreFeature        = [[UMLicenseProductFeature alloc]initWithName:@"core"];
+        _sctpFeature        = [[UMLicenseProductFeature alloc]initWithName:@"sctp"];
+        _m2paFeature        = [[UMLicenseProductFeature alloc]initWithName:@"m2pa"];
+        _mtp3Feature        = [[UMLicenseProductFeature alloc]initWithName:@"mtp3"];
+        _m3uaFeature        = [[UMLicenseProductFeature alloc]initWithName:@"m3ua"];
+        _sccpFeature        = [[UMLicenseProductFeature alloc]initWithName:@"sccp"];
+        _tcapFeature        = [[UMLicenseProductFeature alloc]initWithName:@"tcap"];
+        _gsmmapFeature      = [[UMLicenseProductFeature alloc]initWithName:@"gsmmap"];
+
         /* _umtransportService  is initialized in creatInstances */
         if([self increaseMaximumOpenFiles:16384]==NO)
         {

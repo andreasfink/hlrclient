@@ -43,9 +43,10 @@ clean:
 	${CC} -c ${CFLAGS} ${DEBUG_RELEASE} -x objective-c $<  ${INCLUDEDIRS} -o $@
 
 install: build/$(EXE)
-	mkdir -p $(DESTDIR)/usr/local/sbin/
-	mkdir -p $(DESTDIR)/etc/init.d/
-	mkdir -p $(DESTDIR)/etc/systemd/system/
-	install -b -g bin -o root -m 755 build/$(EXE) $(DESTDIR)/usr/local/sbin/$(EXE)
-	if diff hlrclient.service $(DESTDIR)/etc/systemd/system/hlrclient.service >/dev/null; then echo "no change in hlrclient.service"; else install -b -g bin -o root -m 644 hlrclient.service $(DESTDIR)/etc/systemd/system/hlrclient.service; fi
+	mkdir -p $(DESTDIR)/usr/local/bin/
+	mkdir -p $(DESTDIR)/etc/hlrclient/
+	if [ -d /lib/systemd/system ]; then mkdir -p $(DESTDIR)/etc/systemd/system/; fi
+	install -b -g bin -o root -m 755 build/$(EXE) $(DESTDIR)/usr/local/bin/$(EXE)
+	install -b -g bin -o root -m 644 hlrclient.conf-example $(DESTDIR)/etc/hlrclient/hlrclient.conf-example
+	if [ -d /lib/systemd/system ]; then install -b -g bin -o root -m 644 hlrclient.service $(DESTDIR)/lib/systemd/system/hlrclient.service; fi
 

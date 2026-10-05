@@ -1,0 +1,21 @@
+#
+#  This file is part of hlrclient
+#
+
+[Unit]
+Description=hlrclient
+Requires=syslog.socket
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10
+LimitNOFILE=102400
+ExecStart=/usr/local/bin/hlrclient --pid-file /var/run/hlrclient.pid --read-config /etc/hlrclient/hlrclient.conf
+LimitNOFILE=65535
+
+
+[Install]
+WantedBy=multi-user.target
+
+

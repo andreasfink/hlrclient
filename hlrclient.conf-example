@@ -25,7 +25,7 @@ heartbeat = 30
 #
 # our mtp3 instance named 'mtp3-1'
 # we define network indicator (ni) = 0 here which means international
-# point code. We define our pointcode to be 0-20-7
+# point code. We define our pointcode to be 0-20-7 (decimal 167)
 #
 
 group = mtp3
@@ -67,7 +67,8 @@ linktest-timer = 30
 
 #
 # our mtp3 object is now complete
-# now we create a SCCP instance on top of it.
+# now we create a SCCP instance on top of it
+# and route all requests to 0-20-8 (decimal 168)
 #
 group = sccp
 name = sccp-1
@@ -76,30 +77,8 @@ log-level = 0
 attach-to = mtp3-1
 opc = 0-20-7
 variant = itu
-
-#
-# to route SCCP packets outbound
-# we have to define a next hop first
-#
-group = sccp-next-hop
-name = sccp-hop-1
-attach-to = mtp3-1
-sccp = sccp-1
-dpc = 1-111-1
-
-#
-# we instantiate this next hop as a route and attach it as the default
-# to the sccp instance.
-# note for inbound sccp routing, we do not (yet) create routes
-# as the upper layer adds this while attaching (this might change)
-#
-
-group = sccp-route
-name = sccp-route1
-sccp = sccp-1
-default = yes
-next-hop = sccp-hop-1
-
+mode = ssp
+next-pc = 0-20-8  
 
 #
 # the transaction layer tcap
@@ -115,32 +94,34 @@ attach-to = sccp-1
 attach-number = any
 attach-ssn = msc
 variant = itu
+#transaction-id-range = 7000 - 7999
 
 #
 # the gsm-map layer
-# here we define this instances default SCCP calling address
-# (it can be overriden). This number is only used outbound
 #
 
 group = gsmmap
 name = gsmmap-msc
 enable = YES
-log-level = 0
+log-level = 3
 attach-to = tcap-msc
-address = "+12345678"
+address = any
 ssn = msc
+
 
 #
 # and finally we need to create a MSC entity which does the query
 #
+
 group = msc
 name = msc-1
 enable = YES
-log-level = 0
-attach-to = gsmmap-msc
+log-level = 3
+attach-to =gsmmap-msc
 variant = itu
 timeout = 90
 number = "+12345678"
+default-called-tt = "0"
 
 
 #
@@ -150,5 +131,14 @@ group = webserver
 name = webserver-1
 enable = YES
 log-level = 0
-port = 8080
+port = 8086
+
+
+
+#--------------------
+# User
+#--------------------
+group = service-user
+name = admin
+password = admin
 
